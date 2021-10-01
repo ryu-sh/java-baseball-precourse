@@ -7,11 +7,12 @@ import baseball.view.InputView;
 import baseball.view.ResultView;
 
 public class BaseballGame {
+    private static final String CONTINUE_CONDITION = "1";
     private static final String END_CONDITION = "2";
     private static final String THREE_STRIKE = "3스트라이크";
 
     public static void play(CreateNumberStrategy createNumberStrategy) {
-        String condition = "1";
+        String condition = CONTINUE_CONDITION;
 
         while (!condition.equals(END_CONDITION)) {
             Balls computerBalls = new Balls(createNumberStrategy.createNumbers());
@@ -24,7 +25,15 @@ public class BaseballGame {
 
         while (!result.equals(THREE_STRIKE)) {
             String inputString = InputView.inputNumber();
-            Balls myBalls = new Balls(StringUtils.stringToIntegerList(inputString));
+            Balls myBalls;
+
+            try {
+                myBalls = new Balls(StringUtils.stringToIntegerList(inputString));
+            } catch (IllegalArgumentException illegalArgumentException) {
+                ResultView.printError(illegalArgumentException.getLocalizedMessage());
+                continue;
+            }
+
             result = computerBalls.calculate(myBalls);
             ResultView.printResult(result);
         }

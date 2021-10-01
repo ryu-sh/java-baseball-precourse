@@ -34,6 +34,14 @@ public class StringUtilsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 입력값_같은숫자__체크() {
+        String dupleString = "111";
+        Assertions.assertThatThrownBy(() ->
+                StringUtils.stringToIntegerList(dupleString))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @ParameterizedTest
     @CsvSource(value = {"1","2","3"})
     void 입력값_리스트_반환(int containValue) {

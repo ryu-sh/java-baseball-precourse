@@ -31,7 +31,7 @@ public class BallTest {
                         new Ball(1,4))
                         .isInstanceOf(IllegalArgumentException.class),
                 () -> assertThatThrownBy(() ->
-                        new Ball(10,1))
+                        new Ball(0,1))
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
