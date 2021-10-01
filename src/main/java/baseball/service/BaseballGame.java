@@ -1,4 +1,4 @@
-package baseball;
+package baseball.service;
 
 import baseball.domain.Balls;
 import baseball.domain.Status;
