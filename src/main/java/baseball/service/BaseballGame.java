@@ -30,7 +30,7 @@ public class BaseballGame {
             try {
                 myBalls = new Balls(StringUtils.stringToIntegerList(inputString));
             } catch (IllegalArgumentException illegalArgumentException) {
-                ResultView.printError(illegalArgumentException.getLocalizedMessage());
+                ResultView.printError(illegalArgumentException.getMessage());
                 continue;
             }
 
